@@ -31,7 +31,7 @@ def code_param(code: str):
 @app.get("/code/")
 def read_code(code: str = Depends(code_param)):
     sp.auth_manager.get_access_token(code=code)
-    return RedirectResponse("/")
+    return RedirectResponse(app.url_path_for("read_root"))
 
 
 @app.get("/")
@@ -50,13 +50,13 @@ def check_currently_played():
 def start_listening(background_tasks: BackgroundTasks):
     listener.listening = True
     background_tasks.add_task(check_currently_played)
-    return RedirectResponse("/status")
+    return RedirectResponse(app.url_path_for("get_status"))
 
 
 @app.get("/off")
 def stop_listening():
     listener.listening = False
-    return RedirectResponse("/status")
+    return RedirectResponse(app.url_path_for("get_status"))
 
 
 @app.get("/status")
