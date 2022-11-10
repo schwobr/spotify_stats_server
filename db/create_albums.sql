@@ -4,5 +4,5 @@ CREATE TABLE albums(
     album_type TEXT,
     total_tracks SMALLINT,
     release_date DATE,
-    popularity SMALLINT (popularity >= 0 AND popularity >= 100)
+    popularity SMALLINT CHECK (popularity >= 0 AND popularity >= 100)
 )
