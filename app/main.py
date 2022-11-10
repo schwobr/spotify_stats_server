@@ -41,8 +41,8 @@ def read_root():
 
 def check_currently_played():
     while listener.listening:
-        listener.currently_played = sp.current_playback()
-        sleep(1)
+        listener.currently_played = sp.currently_playing()
+        sleep(5)
     listener.currently_played = None
 
 
