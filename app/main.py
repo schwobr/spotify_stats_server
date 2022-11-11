@@ -44,8 +44,6 @@ class Listener:
             "release_date": album["release_date"],
             "artist_id": artist["id"],
             "artist_name": artist["name"],
-            "artist_pop": artist["popularity"],
-            "genres": artist["genres"],
             "date_time": datetime.fromtimestamp(self.currently_played["timestamp"]),
             "pct_played": pct_played,
         }
@@ -56,8 +54,8 @@ class Listener:
         cur.execute(query, values)
         for artist in track["artists"]:
             query1 = """
-                INSERT INTO artists (id, name, popularity, genres)
-                VALUES (%(id)s, %(name)s, %(popularity)s, %(genres)s
+                INSERT INTO artists (id, name)
+                VALUES (%(id)s, %(name)s)
                 ON CONFLICT (id) DO NOTHING;"""
             query2 = """
                 INSERT INTO tracks_artists (track_id, artist_id)
