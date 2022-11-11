@@ -87,7 +87,7 @@ class Listener:
     def check_last_row(self, currently_played):
         cur = self.conn.cursor()
         query = """
-            SELECT id,track_id FROM plays
+            SELECT id, track_id, pct_played FROM plays
             ORDER BY id DESC
             LIMIT 1;
         """
@@ -116,6 +116,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
 def post_and_close():
     if listener.currently_played is not None:
         listener.post_currently_played()
+    listener.conn.close()
 
 
 @app.get("/login")
