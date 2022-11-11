@@ -44,7 +44,9 @@ class Listener:
             "release_date": album["release_date"],
             "artist_id": artist["id"],
             "artist_name": artist["name"],
-            "date_time": datetime.fromtimestamp(self.currently_played["timestamp"]),
+            "date_time": datetime.fromtimestamp(
+                self.currently_played["timestamp"] / 1000
+            ),
             "pct_played": pct_played,
         }
         query = f"""
