@@ -25,7 +25,7 @@ class Listener:
         )
         pct_played = ceil(pct_played / 5) * 5
 
-        artist = track["artists"].pop(0)
+        artist = track["artists"][0]
 
         cur = self.conn.cursor()
         cur.execute("SELECT nextval(pg_get_serial_sequence('plays', 'id'));")
@@ -52,7 +52,7 @@ class Listener:
             VALUES ({','.join(map(lambda x: f'%({x})s'), values.keys())};
         """
         cur.execute(query, values)
-        for artist in track["artists"]:
+        for artist in track["artists"][1:]:
             query1 = """
                 INSERT INTO artists (id, name)
                 VALUES (%(id)s, %(name)s)
