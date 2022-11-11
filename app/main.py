@@ -75,8 +75,7 @@ class Listener:
             if self.currently_played is None:
                 self.currently_played = currently_played
             elif (
-                currently_played["item"]["track_id"]
-                != self.currently_played["item"]["track_id"]
+                currently_played["item"]["id"] != self.currently_played["item"]["id"]
                 or currently_played["progress_ms"]
                 < self.currently_played["progress_ms"]
             ):
