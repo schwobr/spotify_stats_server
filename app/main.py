@@ -42,7 +42,6 @@ class Listener:
             "album_name": album["name"],
             "total_tracks": album["total_tracks"],
             "release_date": album["release_date"],
-            "album_pop": album["popularity"],
             "artist_id": artist["id"],
             "artist_name": artist["name"],
             "artist_pop": artist["pop"],
