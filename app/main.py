@@ -28,7 +28,7 @@ class Listener:
         artist = track["artists"].pop(0)
 
         cur = self.conn.cursor()
-        cur.execute("SELECT nextval(pg_get_serial_sequence(('plays', 'id'));")
+        cur.execute("SELECT nextval(pg_get_serial_sequence('plays', 'id'));")
         play_id = play_id or cur.fetchone()[0]
 
         values = {
