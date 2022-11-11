@@ -15,7 +15,7 @@ class Listener:
         self.listening = False
         self.currently_played = None
         self.period = 5
-        self.conn = psycopg2.connect(os.environ["DATABASE_URL"], ssl="require")
+        self.conn = psycopg2.connect(os.environ["DATABASE_URL"], sslmode="require")
 
     def post_currently_played(self, play_id=None):
         track = self.currently_played["item"]
