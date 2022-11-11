@@ -49,9 +49,10 @@ class Listener:
             ),
             "pct_played": pct_played,
         }
+        keys = values.keys()
         query = f"""
-            INSERT INTO full_view ({','.join(values.keys())})
-            VALUES ({','.join(map(lambda x: f'%({x})s', values.keys()))});
+            INSERT INTO full_view ({','.join(keys)})
+            VALUES ({','.join(map(lambda x: f'%({x})s', keys))});
         """
         cur.execute(query, values)
         for artist in track["artists"][1:]:
