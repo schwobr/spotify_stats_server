@@ -144,7 +144,6 @@ def check_currently_played():
         currently_played = sp.currently_playing()
         listener.update_currently_played(currently_played=currently_played)
         sleep(listener.period)
-    listener.currently_played = None
 
 
 @app.get("/on")
