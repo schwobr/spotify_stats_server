@@ -91,7 +91,7 @@ class Listener:
             ORDER BY id DESC
             LIMIT 1;
         """
-        cur.query(query)
+        cur.execute(query)
         ret = cur.fetchone()
         cur.close()
         if ret is not None:
